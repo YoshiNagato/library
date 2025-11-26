@@ -14,13 +14,15 @@ body {
 
 header {
     background-color: rgb(38, 38, 110);
-    height:100px;
+    min-height:100px;
 }
 
 nav {
-    height:100px;
+    min-height:100px;
     margin:0 5vw;
+    padding:10px;
     display:flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 }
@@ -50,6 +52,8 @@ img {
     padding:5px 10px;
     border:none;
     border-radius: 5px;
+    margin:10px;
+    font-weight: bold;
 }
 
 .addBook:hover {
@@ -62,6 +66,15 @@ a:hover {
 }
 
 /* MAIN */
+
+h1{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-top:20px;
+    padding:10px;
+    /* text-decoration: underline; */
+    background-color: rgba(38, 38, 110, 0.513);
+}
 
 dialog {
     margin:50px auto;
@@ -101,15 +114,18 @@ label {
     background-color: #bbb0fa;
 }
 
+
+/* LIBRARY */
 .bookWrapper {
     width:80%;
-    margin:auto;
+    margin:50px auto;
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    gap:10vw;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
 }
 
 .bookContainer {
-    background-color: rgb(203, 203, 255);
-    height:200px;
-    width:150px;
+    background-color: rgba(38, 38, 110, 0.196);
+    border-radius:10px;
+    padding:10px;
 }
