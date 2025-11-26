@@ -23,39 +23,59 @@
         </nav>
     </header>
     <main>
-        <dialog>
-            <div class="form">
-                <form>
-                    <legend>New Book</legend>
-                    <div class="input">
-                        <label for="author">Author:
-                            <input
-                                type="text"
-                                id="author"
-                                >
-                        </label>
-                        <br>
-                        <label for="title">Title:
-                            <input
-                                type="text"
-                                id="title"
-                                >
-                        </label>
-                        <br>
-                        <label for="pages">Pages:
-                            <input
-                                type="number"
-                                id="pages"
-                                >
-                        </label>
-                    </div>
-                    <br>
-                    <button class="submit" id="submit">Add new</button>
-                </form>
-            </div>
-        </dialog>
+        
         <h1>My Books</h1>
+
         <div class="bookWrapper">
+            <dialog id="mainDialog">
+                <div class="form">
+                    <form>
+                        <button class="cancel" id="cancel">X</button>
+                        <legend>New Book</legend>
+                        <div class="input">
+                            <label for="author">Author:
+                                <input
+                                    type="text"
+                                    id="author"
+                                    >
+                            </label>
+                            <br>
+                            <label for="title">Title:
+                                <input
+                                    type="text"
+                                    id="title"
+                                    >
+                            </label>
+                            <br>
+                            <label for="pages">Pages:
+                                <input
+                                    type="number"
+                                    id="pages"
+                                    >
+                            </label>
+                        </div>
+                        <br>
+                        <button class="submit" id="submit">Add new</button>
+                    </form>
+                </div>
+            </dialog>
+
+            <div class="bookContainer">
+                <p>unread</p>
+                <p>Author</p>
+                <p>Title</p>
+                <p>Pages</p>
+                <button>Change Status</button>
+                <button>Delete</button>
+            </div>
+            <div class="bookContainer">
+                <p>unread</p>
+                <p>Author</p>
+                <p>Title</p>
+                <p>Pages</p>
+                <button>Change Status</button>
+                <button>Delete</button>
+            </div>
             <div class="bookContainer">
                 <p>unread</p>
                 <p>Author</p>
