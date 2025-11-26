@@ -3,3 +3,113 @@
     padding:0;
     box-sizing: border-box;
 }
+
+body {
+    background-color: rgba(203, 203, 255, 0.582);
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.2ch;
+}
+
+/* HEADER */
+
+header {
+    background-color: rgb(38, 38, 110);
+    height:100px;
+}
+
+nav {
+    height:100px;
+    margin:0 5vw;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+img {
+    height:50px;
+}
+
+.menu > ul {
+    display:flex;
+    gap:10vw;
+    list-style: none;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #dcd6ff;
+    font-size:1.2rem;
+    font-weight: bold;
+    padding:5px 10px;
+    border-radius: 5px;
+}
+
+.addBook {
+    background-color:#dcd6ff;
+    font-size: 1.2rem;
+    padding:5px 10px;
+    border:none;
+    border-radius: 5px;
+}
+
+.addBook:hover {
+    background-color: #bbb0fa;
+}
+
+a:hover {
+    background-color: #736c99;
+
+}
+
+/* MAIN */
+
+dialog {
+    margin:50px auto;
+    border-radius: 10px;
+    border:none;
+    box-shadow: 2px 2px rgb(38, 38, 110);
+}
+
+.form {
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    padding:20px;
+    text-align: center;
+}
+
+legend {
+    font-weight: bold;
+    font-size: larger;
+    margin-bottom:10px;
+}
+
+label {
+    padding:5px;
+    display:grid;
+}
+
+.submit{
+    background-color:#dcd6ff;
+    font-size: 1.2rem;
+    padding:5px 10px;
+    border:none;
+    border-radius: 5px;
+}
+
+.submit:hover {
+    background-color: #bbb0fa;
+}
+
+.bookWrapper {
+    width:80%;
+    margin:auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bookContainer {
+    background-color: rgb(203, 203, 255);
+    height:200px;
+    width:150px;
+}

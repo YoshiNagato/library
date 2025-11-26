@@ -8,6 +8,72 @@
     <title>Library</title>
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/birdyBooksLogo.png">
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">My Books</a></li>
+                    <li><a href="#">My Account</a></li>
+                </ul>
+            </div>
+            <button class="addBook" id="addBook">Add Book</button>
+        </nav>
+    </header>
+    <main>
+        <dialog open>
+            <div class="form">
+                <form>
+                    <legend>New Book</legend>
+                    <div class="input">
+                        <label for="author">Author:
+                            <input
+                                type="text"
+                                id="author"
+                                >
+                        </label>
+                        <br>
+                        <label for="title">Title:
+                            <input
+                                type="text"
+                                id="title"
+                                >
+                        </label>
+                        <br>
+                        <label for="pages">Pages:
+                            <input
+                                type="number"
+                                id="pages"
+                                >
+                        </label>
+                    </div>
+                    <br>
+                    <button class="submit" id="submit">Add new</button>
+                </form>
+            </div>
+        </dialog>
+        <div class="bookWrapper">
+            <!-- <div class="bookContainer">
+                <p>unread</p>
+                <p>Author</p>
+                <p>Title</p>
+                <p>Number of Pages</p>
+            </div>
+            <div class="bookContainer">
+                <p>unread</p>
+                <p>Author</p>
+                <p>Title</p>
+                <p>Number of Pages</p>
+            </div>
+            <div class="bookContainer">
+                <p>unread</p>
+                <p>Author</p>
+                <p>Title</p>
+                <p>Number of Pages</p>
+            </div> -->
+        </div>
+    </main>
 </body>
 </html>
