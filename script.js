@@ -15,8 +15,11 @@ function error() {
 }
 
 // DIALOG BUTTONS
-addBookDialog.addEventListener('click',() =>
-    dialog.showModal());
+addBookDialog.addEventListener('click',() => {
+    newBookForm.reset();
+    dialog.showModal();
+})
+
 
 cancelDialog.addEventListener('click',() =>
     dialog.close());
@@ -36,18 +39,25 @@ function Book(author,title,pages) {
 
 
 // ADD BOOKS
-addNewBook.addEventListener('click',addBooktoLibrary);
-
-function addBooktoLibrary() {
-    var author = document.getElementById("author").value;
-    var title = document.getElementById("title").value;
-    var pages = document.getElementById("pages").value;
-
+addNewBook.addEventListener('click',() => {
+    const author = document.getElementById("author").value;
+    const title = document.getElementById("title").value;
+    const pages = document.getElementById("pages").value;
     const newBook = new Book(author,title,pages);
+    // console.log(newBook);
+    addBooktoLibrary(newBook);
+    displayBooks();
+    dialog.close();
+});
+
+
+function addBooktoLibrary(newBook) {
     myLibrary.push(newBook);
     console.log(myLibrary);
+}
 
-    for (const book of myLibrary) {
+function displayBooks() {
+    myLibrary.forEach(book => {
         var bookContainer = document.createElement("div");
         bookContainer.setAttribute("class","bookContainer");
         bookWrapper.appendChild(bookContainer);
@@ -62,17 +72,17 @@ function addBooktoLibrary() {
 
         var titleOutput = document.createElement("p");
         titleOutput.setAttribute("class","bookText");
-        titleOutput.innerText = `Title: ${title}`;
+        titleOutput.innerText = `Title: ${book.title}`;
         infoContainer.appendChild(titleOutput);
 
         var authorOutput = document.createElement("p");
         authorOutput.setAttribute("class","bookText");
-        authorOutput.innerText = `Author: ${author}`;
+        authorOutput.innerText = `Author: ${book.author}`;
         infoContainer.appendChild(authorOutput);
 
         var pagesOutput = document.createElement("p");
         pagesOutput.setAttribute("class","bookText");
-        pagesOutput.innerText = `Pages: ${pages}`;
+        pagesOutput.innerText = `Pages: ${book.pages}`;
         infoContainer.appendChild(pagesOutput);
 
         var bookContBtn = document.createElement("div");
@@ -88,57 +98,10 @@ function addBooktoLibrary() {
         deleteBtn.setAttribute("class","delete");
         deleteBtn.innerText = "Delete";
         bookContBtn.appendChild(deleteBtn);
-    }
-
-    dialog.close();
+    })
 }
 
-// function displayBooks() {
-//     for (const book of myLibrary) {
-//         var bookContainer = document.createElement("div");
-//         bookContainer.setAttribute("class","bookContainer");
-//         bookWrapper.appendChild(bookContainer);
-
-//         var status = document.createElement("p");
-//         status.setAttribute("class","status");
-//         status.innerText = `unread`;
-//         bookContainer.appendChild(status);
-
-//         var infoContainer = document.createElement("div");
-//         bookContainer.appendChild(infoContainer);
-
-//         var titleOutput = document.createElement("p");
-//         titleOutput.setAttribute("class","bookText");
-//         titleOutput.innerText = `Title: ${title}`;
-//         infoContainer.appendChild(titleOutput);
-
-//         var authorOutput = document.createElement("p");
-//         authorOutput.setAttribute("class","bookText");
-//         authorOutput.innerText = `Author: ${author}`;
-//         infoContainer.appendChild(authorOutput);
-
-//         var pagesOutput = document.createElement("p");
-//         pagesOutput.setAttribute("class","bookText");
-//         pagesOutput.innerText = `Pages: ${pages}`;
-//         infoContainer.appendChild(pagesOutput);
-
-//         var bookContBtn = document.createElement("div");
-//         bookContBtn.setAttribute("class","bookContBtn");
-//         bookContainer.appendChild(bookContBtn);
-
-//         var changeBtn = document.createElement("button");
-//         changeBtn.setAttribute("class","change");
-//         changeBtn.innerText = "Change Status";
-//         bookContBtn.appendChild(changeBtn);
-
-//         var deleteBtn = document.createElement("button");
-//         deleteBtn.setAttribute("class","delete");
-//         deleteBtn.innerText = "Delete";
-//         bookContBtn.appendChild(deleteBtn);
-//     }
-// }
-
-// displayBooks();
+displayBooks();
 
 
 // // CHANGE STATUS BUTTON
