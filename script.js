@@ -2,23 +2,38 @@ const addBookDialog = document.getElementById("addBook");
 const dialog = document.getElementById("mainDialog");
 const cancelDialog = document.getElementById("cancel");
 const addNewBook = document.getElementById("submit");
-// const bookContainer = document.getElementById("bookContainer");
 const bookWrapper = document.getElementById("bookWrapper");
-const changeBtn = document.getElementById("changeBtn");
-const deleteBtn = document.getElementById("deleteBtn");
-const readStatus = document.getElementById("status");
+// const bookContainer = document.getElementById("bookContainer");
+// const changeBtn = document.getElementById("changeBtn");
+// const deleteBtn = document.getElementById("deleteBtn");
+// const readStatus = document.getElementById("status");
 const myLibrary = [];
 
-addBookDialog.addEventListener('click',() => {
-    dialog.showModal();
-})
+// ERROR MESSAGE
+function error() {
+    alert("This is just fancy stuff, not for real clicking. Please no clicky click.")
+}
+
+// DIALOG BUTTONS
+addBookDialog.addEventListener('click',() =>
+    dialog.showModal());
 
 cancelDialog.addEventListener('click',() =>
     dialog.close());
 
-function error() {
-    alert("This is just fancy stuff, not for real clicking. Please no clicky click.")
+
+// BOOK CONSTRUCTOR
+function Book(author,title,pages) {
+    this.id = crypto.randomUUID();
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = "unread";
 }
+
+const book = new Book("Duck","Donaldo","156");
+console.log(book);
+
 
 // CHANGE STATUS BUTTON
 
