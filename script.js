@@ -25,32 +25,137 @@ cancelDialog.addEventListener('click',() =>
 // BOOK CONSTRUCTOR
 function Book(author,title,pages) {
     this.id = crypto.randomUUID();
-    this.title = title;
     this.author = author;
+    this.title = title;
     this.pages = pages;
     this.read = "unread";
 }
 
-const book = new Book("Duck","Donaldo","156");
-console.log(book);
+// const book = new Book("Duck","Donaldo","156");
+// console.log(book);
 
 
-// CHANGE STATUS BUTTON
+// ADD BOOKS
+addNewBook.addEventListener('click',addBooktoLibrary);
 
-changeBtn.addEventListener('click', changeReadStatus);
+function addBooktoLibrary() {
+    var author = document.getElementById("author").value;
+    var title = document.getElementById("title").value;
+    var pages = document.getElementById("pages").value;
 
-function changeReadStatus() {
-    if (readStatus.innerText == "unread") {
-        readStatus.innerText = "read";
-        readStatus.style.color = "green";
-    } else {
-        readStatus.innerText = "unread";
-        readStatus.style.color = "red";
+    const newBook = new Book(author,title,pages);
+    myLibrary.push(newBook);
+    console.log(myLibrary);
+
+    for (const book of myLibrary) {
+        var bookContainer = document.createElement("div");
+        bookContainer.setAttribute("class","bookContainer");
+        bookWrapper.appendChild(bookContainer);
+
+        var status = document.createElement("p");
+        status.setAttribute("class","status");
+        status.innerText = `unread`;
+        bookContainer.appendChild(status);
+
+        var infoContainer = document.createElement("div");
+        bookContainer.appendChild(infoContainer);
+
+        var titleOutput = document.createElement("p");
+        titleOutput.setAttribute("class","bookText");
+        titleOutput.innerText = `Title: ${title}`;
+        infoContainer.appendChild(titleOutput);
+
+        var authorOutput = document.createElement("p");
+        authorOutput.setAttribute("class","bookText");
+        authorOutput.innerText = `Author: ${author}`;
+        infoContainer.appendChild(authorOutput);
+
+        var pagesOutput = document.createElement("p");
+        pagesOutput.setAttribute("class","bookText");
+        pagesOutput.innerText = `Pages: ${pages}`;
+        infoContainer.appendChild(pagesOutput);
+
+        var bookContBtn = document.createElement("div");
+        bookContBtn.setAttribute("class","bookContBtn");
+        bookContainer.appendChild(bookContBtn);
+
+        var changeBtn = document.createElement("button");
+        changeBtn.setAttribute("class","change");
+        changeBtn.innerText = "Change Status";
+        bookContBtn.appendChild(changeBtn);
+
+        var deleteBtn = document.createElement("button");
+        deleteBtn.setAttribute("class","delete");
+        deleteBtn.innerText = "Delete";
+        bookContBtn.appendChild(deleteBtn);
     }
+
+    dialog.close();
 }
 
+// function displayBooks() {
+//     for (const book of myLibrary) {
+//         var bookContainer = document.createElement("div");
+//         bookContainer.setAttribute("class","bookContainer");
+//         bookWrapper.appendChild(bookContainer);
 
-// DELETE BOOK
+//         var status = document.createElement("p");
+//         status.setAttribute("class","status");
+//         status.innerText = `unread`;
+//         bookContainer.appendChild(status);
+
+//         var infoContainer = document.createElement("div");
+//         bookContainer.appendChild(infoContainer);
+
+//         var titleOutput = document.createElement("p");
+//         titleOutput.setAttribute("class","bookText");
+//         titleOutput.innerText = `Title: ${title}`;
+//         infoContainer.appendChild(titleOutput);
+
+//         var authorOutput = document.createElement("p");
+//         authorOutput.setAttribute("class","bookText");
+//         authorOutput.innerText = `Author: ${author}`;
+//         infoContainer.appendChild(authorOutput);
+
+//         var pagesOutput = document.createElement("p");
+//         pagesOutput.setAttribute("class","bookText");
+//         pagesOutput.innerText = `Pages: ${pages}`;
+//         infoContainer.appendChild(pagesOutput);
+
+//         var bookContBtn = document.createElement("div");
+//         bookContBtn.setAttribute("class","bookContBtn");
+//         bookContainer.appendChild(bookContBtn);
+
+//         var changeBtn = document.createElement("button");
+//         changeBtn.setAttribute("class","change");
+//         changeBtn.innerText = "Change Status";
+//         bookContBtn.appendChild(changeBtn);
+
+//         var deleteBtn = document.createElement("button");
+//         deleteBtn.setAttribute("class","delete");
+//         deleteBtn.innerText = "Delete";
+//         bookContBtn.appendChild(deleteBtn);
+//     }
+// }
+
+// displayBooks();
+
+
+// // CHANGE STATUS BUTTON
+// changeBtn.addEventListener('click', changeReadStatus);
+
+// function changeReadStatus() {
+//     if (readStatus.innerText == "unread") {
+//         readStatus.innerText = "read";
+//         readStatus.style.color = "green";
+//     } else {
+//         readStatus.innerText = "unread";
+//         readStatus.style.color = "red";
+//     }
+// }
+
+
+// // DELETE BOOK
 
 // deleteBtn.addEventListener('click',deleteBook);
 
@@ -61,52 +166,61 @@ function changeReadStatus() {
 
 // GET INPUT
 
-addNewBook.addEventListener('click',getInputValue);
+// addNewBook.addEventListener('click',getInputValue);
 
-function getInputValue() {
-    var author = document.getElementById("author").value;
-    var title = document.getElementById("title").value;
-    var pages = document.getElementById("pages").value;
-    // console.log(`${author}, ${title},${pages}`);
+// function getInputValue() {
+//     var author = document.getElementById("author").value;
+//     var title = document.getElementById("title").value;
+//     var pages = document.getElementById("pages").value;
+//     // console.log(`${author}, ${title},${pages}`);
 
-    var bookContainer = document.createElement("div");
-    bookWrapper.appendChild(bookContainer);
-    bookContainer.style.backgroundColor = "rgba(38, 38, 110, 0.196)";
-    bookContainer.style.border = "2px solid rgba(38, 38, 110, 0.513)";
-    bookContainer.style.borderRadius = "10px";
-    bookContainer.style.padding = "10px";
+//     var bookContainer = document.createElement("div");
+//     bookContainer.setAttribute("class","bookContainer");
+//     bookWrapper.appendChild(bookContainer);
 
-    var status = document.createElement("p");
-    status.innerText = "unread";
-    status.style.color = "red";
-    status.style.textAlign = "right";
-    bookContainer.appendChild(status);
+//     var status = document.createElement("p");
+//     status.setAttribute("class","status");
+//     status.innerText = `unread`;
+//     bookContainer.appendChild(status);
 
-    var infoContainer = document.createElement("div");
-    bookContainer.appendChild(infoContainer);
+//     var infoContainer = document.createElement("div");
+//     bookContainer.appendChild(infoContainer);
 
-    var titleOutput = document.createElement("p");
-    titleOutput.style.marginBottom = "15px";
-    titleOutput.innerText = `Title: ${title}`;
-    infoContainer.appendChild(titleOutput);
+//     var titleOutput = document.createElement("p");
+//     titleOutput.setAttribute("class","bookText");
+//     titleOutput.innerText = `Title: ${title}`;
+//     infoContainer.appendChild(titleOutput);
 
-    var authorOutput = document.createElement("p");
-    authorOutput.setAttribute("class","bookText");
-    authorOutput.innerText = `Author: ${author}`;
-    infoContainer.appendChild(authorOutput);
+//     var authorOutput = document.createElement("p");
+//     authorOutput.setAttribute("class","bookText");
+//     authorOutput.innerText = `Author: ${author}`;
+//     infoContainer.appendChild(authorOutput);
 
-    var pagesOutput = document.createElement("p");
+//     var pagesOutput = document.createElement("p");
+//     pagesOutput.setAttribute("class","bookText");
+//     pagesOutput.innerText = `Pages: ${pages}`;
+//     infoContainer.appendChild(pagesOutput);
 
-    pagesOutput.innerText = `Pages: ${pages}`;
-    infoContainer.appendChild(pagesOutput);
+//     var bookContBtn = document.createElement("div");
+//     bookContBtn.setAttribute("class","bookContBtn");
+//     bookContainer.appendChild(bookContBtn);
 
+//     var changeBtn = document.createElement("button");
+//     changeBtn.setAttribute("class","change");
+//     changeBtn.innerText = "Change Status";
+//     bookContBtn.appendChild(changeBtn);
 
-    // bookContainer.style.display = "block";
+//     var deleteBtn = document.createElement("button");
+//     deleteBtn.setAttribute("class","delete");
+//     deleteBtn.innerText = "Delete";
+//     bookContBtn.appendChild(deleteBtn);
 
-    // document.getElementById("titleOutput").innerText = `Title: ${title}`;
-    // document.getElementById("authorOutput").innerText =`Author: ${author}`;
-    // document.getElementById("pagesOutput").innerText =`Pages: ${pages}`;
+//     // bookContainer.style.display = "block";
 
-    dialog.close();
-}
+//     // document.getElementById("titleOutput").innerText = `Title: ${title}`;
+//     // document.getElementById("authorOutput").innerText =`Author: ${author}`;
+//     // document.getElementById("pagesOutput").innerText =`Pages: ${pages}`;
+
+//     dialog.close();
+// }
 
