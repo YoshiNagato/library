@@ -134,7 +134,7 @@ label {
 }
 
 .bookContainer {
-    display:none;
+    /* display:none; */
     background-color: rgba(38, 38, 110, 0.196);
     border:2px solid rgba(38, 38, 110, 0.513);
     border-radius:10px;
@@ -149,7 +149,7 @@ label {
     right:10px; */
 }
 
-.info > p{
+.bookText{
     margin-bottom: 15px;
 }
 

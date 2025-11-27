@@ -2,7 +2,7 @@ const addBookDialog = document.getElementById("addBook");
 const dialog = document.getElementById("mainDialog");
 const cancelDialog = document.getElementById("cancel");
 const addNewBook = document.getElementById("submit");
-const bookContainer = document.getElementById("bookContainer");
+// const bookContainer = document.getElementById("bookContainer");
 const bookWrapper = document.getElementById("bookWrapper");
 const changeBtn = document.getElementById("changeBtn");
 const deleteBtn = document.getElementById("deleteBtn");
@@ -49,11 +49,42 @@ function changeReadStatus() {
 addNewBook.addEventListener('click',getInputValue);
 
 function getInputValue() {
-    // document.createElement(bookContainer);
     var author = document.getElementById("author").value;
     var title = document.getElementById("title").value;
     var pages = document.getElementById("pages").value;
     // console.log(`${author}, ${title},${pages}`);
+
+    var bookContainer = document.createElement("div");
+    bookWrapper.appendChild(bookContainer);
+    bookContainer.style.backgroundColor = "rgba(38, 38, 110, 0.196)";
+    bookContainer.style.border = "2px solid rgba(38, 38, 110, 0.513)";
+    bookContainer.style.borderRadius = "10px";
+    bookContainer.style.padding = "10px";
+
+    var status = document.createElement("p");
+    status.innerText = "unread";
+    status.style.color = "red";
+    status.style.textAlign = "right";
+    bookContainer.appendChild(status);
+
+    var infoContainer = document.createElement("div");
+    bookContainer.appendChild(infoContainer);
+
+    var titleOutput = document.createElement("p");
+    titleOutput.style.marginBottom = "15px";
+    titleOutput.innerText = `Title: ${title}`;
+    infoContainer.appendChild(titleOutput);
+
+    var authorOutput = document.createElement("p");
+    authorOutput.setAttribute("class","bookText");
+    authorOutput.innerText = `Author: ${author}`;
+    infoContainer.appendChild(authorOutput);
+
+    var pagesOutput = document.createElement("p");
+
+    pagesOutput.innerText = `Pages: ${pages}`;
+    infoContainer.appendChild(pagesOutput);
+
 
     // bookContainer.style.display = "block";
 
