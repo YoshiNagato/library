@@ -16,7 +16,7 @@
             <div class="menu">
                 <ul>
                     <li><a href="#">My Books</a></li>
-                    <li><a href="#">My Account</a></li>
+                    <li><a href="#" onclick="error()">My Account</a></li>
                 </ul>
             </div>
             <button class="addBook" id="addBook">Add Book</button>
@@ -26,10 +26,10 @@
         
         <h1>My Books</h1>
 
-        <div class="bookWrapper">
+        <div class="bookWrapper" id="bookWrapper">
             <dialog id="mainDialog">
                 <div class="form">
-                    <form>
+                    <form action="" method="get">
                         <button class="cancel" id="cancel">X</button>
                         <legend>New Book</legend>
                         <div class="input">
@@ -60,46 +60,19 @@
                 </div>
             </dialog>
 
-            <div class="bookContainer">
-                <p>unread</p>
-                <p>Author</p>
-                <p>Title</p>
-                <p>Pages</p>
-                <button>Change Status</button>
-                <button>Delete</button>
+            <div class="bookContainer" id="bookContainer">
+                <p class="status" id="status">unread</p>
+                <div class="info">
+                    <p id="titleOutput">Title:</p>                    
+                    <p id="authorOutput">Author:</p>
+                    <p id="pagesOutput">Pages:</p>
+                </div>
+                <div class="bookContBtn">
+                    <button class="change" id="changeBtn">Change Status</button>
+                    <button class="delete" id="deleteBtn">Delete</button>
+                </div>
             </div>
-            <div class="bookContainer">
-                <p>unread</p>
-                <p>Author</p>
-                <p>Title</p>
-                <p>Pages</p>
-                <button>Change Status</button>
-                <button>Delete</button>
-            </div>
-            <div class="bookContainer">
-                <p>unread</p>
-                <p>Author</p>
-                <p>Title</p>
-                <p>Pages</p>
-                <button>Change Status</button>
-                <button>Delete</button>
-            </div>
-            <div class="bookContainer">
-                <p>unread</p>
-                <p>Author</p>
-                <p>Title</p>
-                <p>Pages</p>
-                <button>Change Status</button>
-                <button>Delete</button>
-            </div>
-            <div class="bookContainer">
-                <p>unread</p>
-                <p>Author</p>
-                <p>Title</p>
-                <p>Pages</p>
-                <button>Change Status</button>
-                <button>Delete</button>
-            </div>
+            
         </div>
     </main>
 </body>
