@@ -34,9 +34,9 @@ function Book(author,title,pages) {
     this.read = "unread";
 }
 
+
 // const book = new Book("Duck","Donaldo","156");
 // console.log(book);
-
 
 // ADD BOOKS
 addNewBook.addEventListener('click',() => {
@@ -44,7 +44,7 @@ addNewBook.addEventListener('click',() => {
     const title = document.getElementById("title").value;
     const pages = document.getElementById("pages").value;
     const newBook = new Book(author,title,pages);
-    // console.log(newBook);
+    console.log(newBook);
     addBooktoLibrary(newBook);
     displayBooks();
     dialog.close();
@@ -57,6 +57,7 @@ function addBooktoLibrary(newBook) {
 }
 
 function displayBooks() {
+    bookWrapper.replaceChildren();
     myLibrary.forEach(book => {
         var bookContainer = document.createElement("div");
         bookContainer.setAttribute("class","bookContainer");
