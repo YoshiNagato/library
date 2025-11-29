@@ -7,7 +7,7 @@ const bookWrapper = document.getElementById("bookWrapper");
 // const changeBtn = document.getElementById("changeBtn");
 // const deleteBtn = document.getElementById("deleteBtn");
 // const readStatus = document.getElementById("status");
-const myLibrary = [];
+var myLibrary = [];
 
 // ERROR MESSAGE
 function error() {
@@ -27,11 +27,15 @@ cancelDialog.addEventListener('click',() =>
 
 // BOOK CONSTRUCTOR
 function Book(author,title,pages) {
+    // if (!new.target) {
+    //     throw Error("You must use the 'new' operator to call the constructor");
+    // }
+
     this.id = crypto.randomUUID();
     this.author = author;
     this.title = title;
     this.pages = pages;
-    this.read = "unread";
+    this.read = false;
 }
 
 
@@ -90,42 +94,38 @@ function displayBooks() {
         bookContBtn.setAttribute("class","bookContBtn");
         bookContainer.appendChild(bookContBtn);
 
-        var changeBtn = document.createElement("button");
+        const changeBtn = document.createElement("button");
         changeBtn.setAttribute("class","change");
         changeBtn.innerText = "Change Status";
         bookContBtn.appendChild(changeBtn);
 
-        var deleteBtn = document.createElement("button");
+        const deleteBtn = document.createElement("button");
         deleteBtn.setAttribute("class","delete");
         deleteBtn.innerText = "Delete";
+        deleteBtn.addEventListener('click',() => 
+            removeBook(book.id));
         bookContBtn.appendChild(deleteBtn);
     })
 }
-
 displayBooks();
 
 
-// // CHANGE STATUS BUTTON
-// changeBtn.addEventListener('click', changeReadStatus);
+// REMOVE BOOKS
+function removeBook(bookId){
+    myLibrary = myLibrary.filter(book => book.id !== bookId);
+    displayBooks();
+}
 
-// function changeReadStatus() {
-//     if (readStatus.innerText == "unread") {
-//         readStatus.innerText = "read";
-//         readStatus.style.color = "green";
-//     } else {
-//         readStatus.innerText = "unread";
-//         readStatus.style.color = "red";
-//     }
-// }
+
+// // CHANGE STATUS BUTTON
+
 
 
 // // DELETE BOOK
 
 // deleteBtn.addEventListener('click',deleteBook);
 
-// function deleteBook() {
-//     bookContainer.remove();
-// }
+
 
 
 // GET INPUT
