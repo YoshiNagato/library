@@ -3,10 +3,7 @@ const dialog = document.getElementById("mainDialog");
 const cancelDialog = document.getElementById("cancel");
 const addNewBook = document.getElementById("submit");
 const bookWrapper = document.getElementById("bookWrapper");
-// const bookContainer = document.getElementById("bookContainer");
-// const changeBtn = document.getElementById("changeBtn");
-// const deleteBtn = document.getElementById("deleteBtn");
-// const readStatus = document.getElementById("status");
+
 var myLibrary = [];
 
 // ERROR MESSAGE
@@ -26,7 +23,7 @@ cancelDialog.addEventListener('click',() =>
 
 
 // BOOK CONSTRUCTOR
-function Book(author,title,pages,read) {
+function Book(title,author,pages,read) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor");
     }
@@ -40,7 +37,7 @@ function Book(author,title,pages,read) {
 // const book = new Book("Duck","Donaldo","156");
 // console.log(book);
 
-// ADD BOOKS
+// GET INPUT VALUES AND ADD TO LIBRARY
 addNewBook.addEventListener('click',() => {
     const author = document.getElementById("author").value;
     const title = document.getElementById("title").value;
@@ -71,6 +68,8 @@ addBookToLibrary('Dune', 'Frank Herbert', '412',false);
 addBookToLibrary('Atomic Habits', 'James Clear', '320',true);
 addBookToLibrary('To Kill a Mockingbird', 'Harper Lee', '281',true);
 
+
+//DISPLAY BOOKS
 function displayBooks() {
     bookWrapper.replaceChildren();
     myLibrary.forEach((book) => {
@@ -80,7 +79,6 @@ function displayBooks() {
 
         var status = document.createElement("p");
         status.setAttribute("class","status");
-        // status.innerText = (book.read ? "unread" : "read");
         if (book.read == false) {
             status.innerText = `unread`;
             status.style.color = "red"
@@ -129,8 +127,6 @@ function displayBooks() {
             removeBook(book.id));
         bookContBtn.appendChild(deleteBtn);
     })
-
-    
 }
 displayBooks();
 
@@ -143,11 +139,7 @@ function removeBook(bookId){
     displayBooks();
 }
 
-// CHANGE STATUS BUTTON
-function changeReadStatus() {
-
-}
-
+//TOGGLE READ
 Book.prototype.toggleRead = function() {
     this.read = !this.read;
 };
