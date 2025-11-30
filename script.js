@@ -34,8 +34,7 @@ function Book(title,author,pages,read) {
     this.pages = pages;
     this.read = read;
 }
-// const book = new Book("Duck","Donaldo","156");
-// console.log(book);
+
 
 // GET INPUT VALUES AND ADD TO LIBRARY
 addNewBook.addEventListener('click',() => {
