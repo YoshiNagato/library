@@ -27,15 +27,15 @@ cancelDialog.addEventListener('click',() =>
 
 // BOOK CONSTRUCTOR
 function Book(author,title,pages) {
-    // if (!new.target) {
-    //     throw Error("You must use the 'new' operator to call the constructor");
-    // }
+    if (!new.target) {
+        throw Error("You must use the 'new' operator to call the constructor");
+    }
 
     this.id = crypto.randomUUID();
     this.author = author;
     this.title = title;
     this.pages = pages;
-    this.read = false;
+    this.read = "read";
 }
 
 
@@ -47,18 +47,25 @@ addNewBook.addEventListener('click',() => {
     const author = document.getElementById("author").value;
     const title = document.getElementById("title").value;
     const pages = document.getElementById("pages").value;
-    const newBook = new Book(author,title,pages);
-    console.log(newBook);
-    addBooktoLibrary(newBook);
-    displayBooks();
     dialog.close();
 });
 
 
-function addBooktoLibrary(newBook) {
+function addBookToLibrary(title,author,pages) {
+    const newBook = new Book(title,author,pages);
+    console.log(newBook);
+    // addBookToLibrary(newBook);
     myLibrary.push(newBook);
+    displayBooks();
     console.log(myLibrary);
 }
+
+// EXAMPLE BOOKS
+addBookToLibrary('Alice in Wonderland', 'Lewis Carroll', '250');
+addBookToLibrary('The Alchemist', 'Paulo Coelho', '210');
+addBookToLibrary('Dune', 'Frank Herbert', '412');
+addBookToLibrary('Atomic Habits', 'James Clear', '320');
+addBookToLibrary('To Kill a Mockingbird', 'Harper Lee', '281');
 
 function displayBooks() {
     bookWrapper.replaceChildren();
@@ -69,7 +76,13 @@ function displayBooks() {
 
         var status = document.createElement("p");
         status.setAttribute("class","status");
-        status.innerText = `unread`;
+        if (book.read == false) {
+            status.innerText = `unread`;
+            status.style.color = "red"
+        } else {
+            status.innerText = "read";
+            status.style.color = "green";
+        }
         bookContainer.appendChild(status);
 
         var infoContainer = document.createElement("div");
@@ -106,6 +119,8 @@ function displayBooks() {
             removeBook(book.id));
         bookContBtn.appendChild(deleteBtn);
     })
+
+    
 }
 displayBooks();
 
@@ -116,8 +131,8 @@ function removeBook(bookId){
     displayBooks();
 }
 
+// CHANGE STATUS BUTTON
+function changeReadStatus() {
 
-// // CHANGE STATUS BUTTON
-
-
+}
 
