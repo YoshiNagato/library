@@ -26,7 +26,7 @@ cancelDialog.addEventListener('click',() =>
 
 
 // BOOK CONSTRUCTOR
-function Book(author,title,pages) {
+function Book(author,title,pages,read) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor");
     }
@@ -35,10 +35,8 @@ function Book(author,title,pages) {
     this.author = author;
     this.title = title;
     this.pages = pages;
-    this.read = "read";
+    this.read = read;
 }
-
-
 // const book = new Book("Duck","Donaldo","156");
 // console.log(book);
 
@@ -47,12 +45,14 @@ addNewBook.addEventListener('click',() => {
     const author = document.getElementById("author").value;
     const title = document.getElementById("title").value;
     const pages = document.getElementById("pages").value;
+    const read = false;
+    addBookToLibrary(title,author,pages,read);
     dialog.close();
 });
 
 
-function addBookToLibrary(title,author,pages) {
-    const newBook = new Book(title,author,pages);
+function addBookToLibrary(title,author,pages,read) {
+    const newBook = new Book(title,author,pages,read);
     console.log(newBook);
     // addBookToLibrary(newBook);
     myLibrary.push(newBook);
@@ -61,21 +61,22 @@ function addBookToLibrary(title,author,pages) {
 }
 
 // EXAMPLE BOOKS
-addBookToLibrary('Alice in Wonderland', 'Lewis Carroll', '250');
-addBookToLibrary('The Alchemist', 'Paulo Coelho', '210');
-addBookToLibrary('Dune', 'Frank Herbert', '412');
-addBookToLibrary('Atomic Habits', 'James Clear', '320');
-addBookToLibrary('To Kill a Mockingbird', 'Harper Lee', '281');
+addBookToLibrary('Alice in Wonderland', 'Lewis Carroll', '250',false);
+addBookToLibrary('The Alchemist', 'Paulo Coelho', '210',true);
+addBookToLibrary('Dune', 'Frank Herbert', '412',false);
+addBookToLibrary('Atomic Habits', 'James Clear', '320',true);
+addBookToLibrary('To Kill a Mockingbird', 'Harper Lee', '281',true);
 
 function displayBooks() {
     bookWrapper.replaceChildren();
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book) => {
         var bookContainer = document.createElement("div");
         bookContainer.setAttribute("class","bookContainer");
         bookWrapper.appendChild(bookContainer);
 
         var status = document.createElement("p");
         status.setAttribute("class","status");
+        // status.innerText = (book.read ? "unread" : "read");
         if (book.read == false) {
             status.innerText = `unread`;
             status.style.color = "red"
@@ -123,6 +124,8 @@ function displayBooks() {
     
 }
 displayBooks();
+
+
 
 
 // REMOVE BOOKS
