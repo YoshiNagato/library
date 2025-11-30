@@ -46,8 +46,12 @@ addNewBook.addEventListener('click',() => {
     const title = document.getElementById("title").value;
     const pages = document.getElementById("pages").value;
     const read = false;
-    addBookToLibrary(title,author,pages,read);
-    dialog.close();
+    if (title == "") {
+        alert("Title must be given!")
+    } else {
+        addBookToLibrary(title,author,pages,read);
+        dialog.close();
+    }
 });
 
 
@@ -112,6 +116,11 @@ function displayBooks() {
         changeBtn.setAttribute("class","change");
         changeBtn.innerText = "Change Status";
         bookContBtn.appendChild(changeBtn);
+        changeBtn.addEventListener('click',() => {
+            book.toggleRead();
+            displayBooks();
+        });
+
 
         const deleteBtn = document.createElement("button");
         deleteBtn.setAttribute("class","delete");
@@ -139,3 +148,6 @@ function changeReadStatus() {
 
 }
 
+Book.prototype.toggleRead = function() {
+    this.read = !this.read;
+};
